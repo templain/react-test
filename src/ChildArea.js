@@ -8,7 +8,8 @@ const style = {
 const buttonStyle = {
     width:"100%",
     height:"90%",
-    padding:"10px"
+    padding:"10px",
+    fontSize:"60px"
 };
 export const ChildArea = (props) => {
   const { t1, t2 } = props;
