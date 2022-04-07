@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
+import { ChildArea } from "./ChildArea";
 
 function App() {
+  console.log("App");
+  const [text1, setText1] = useState("");
+  const [text2, setText2] = useState("");
+  const onChangeText1 = (e) => setText1(e.target.value);
+  const onChangeText2 = (e) => setText2(e.target.value);
+  const [cards, setCards] = useState([]);
+  const onClickOpen = () => {
+    setCards([...cards, { text1, text2 }]);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input value={text1} onChange={onChangeText1} />
+      <input value={text2} onChange={onChangeText2} />
+      <br />
+      <br />
+      <button onClick={onClickOpen}>Add</button>
+      {cards.map((v) => {
+        return <ChildArea t1={v.text1} t2={v.text2} />;
+      })}
     </div>
   );
+
 }
 
 export default App;
