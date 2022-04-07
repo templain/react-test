@@ -11,6 +11,8 @@ function App() {
   const [cards, setCards] = useState([]);
   const onClickOpen = () => {
     setCards([...cards, { text1, text2 }]);
+    setText1("");
+    setText2("");
   };
   return (
     <div className="App">
