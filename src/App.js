@@ -16,7 +16,7 @@ function App() {
   };
   const onClickShuffle = () => {
     cards.sort(() => Math.random() - 0.5);
-    setCards(cards);
+    setCards(cards.slice(0, cards.length));
   };
   return (
     <div className="App">
