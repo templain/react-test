@@ -14,6 +14,10 @@ function App() {
     setText1("");
     setText2("");
   };
+  const onClickShuffle = () => {
+    cards.sort(() => Math.random() - 0.5);
+    setCards(cards);
+  };
   return (
     <div className="App">
       <input value={text1} onChange={onChangeText1} />
@@ -21,6 +25,7 @@ function App() {
       <br />
       <br />
       <button onClick={onClickOpen}>Add</button>
+      <button onClick={onClickShuffle}>Shuffle</button>
       {cards.map((v) => {
         return <ChildArea t1={v.text1} t2={v.text2} />;
       })}
