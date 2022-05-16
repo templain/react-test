@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css';
 import { ChildArea } from "./ChildArea";
+import { CounterState } from "wasm";
+
+const counter_state = CounterState.new();
 
 function App() {
-  console.log("App");
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
+  const [textCounter, setTextCounter] = useState("0");
   const onChangeText1 = (e) => setText1(e.target.value);
   const onChangeText2 = (e) => setText2(e.target.value);
   const [cards, setCards] = useState([]);
@@ -13,6 +16,7 @@ function App() {
     setCards([...cards, { text1, text2 }]);
     setText1("");
     setText2("");
+    setTextCounter(counter_state.increment_counter());
   };
   const onClickShuffle = () => {
     cards.sort(() => Math.random() - 0.5);
@@ -22,6 +26,7 @@ function App() {
     <div className="App">
       <input value={text1} onChange={onChangeText1} />
       <input value={text2} onChange={onChangeText2} />
+      現在{textCounter}問登録済みです。
       <br />
       <br />
       <button onClick={onClickOpen}>Add</button>
