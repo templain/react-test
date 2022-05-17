@@ -19,7 +19,7 @@
     "build": "react-app-rewired build",
     "build:wasm": "cd wasm && wasm-pack build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
