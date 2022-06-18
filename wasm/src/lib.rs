@@ -29,6 +29,10 @@ impl CounterState {
     pub fn get_counter(&self) -> i32 {
         self.counter
     }
+    
+    pub fn set_counter(&mut self, new_counter:i32){
+        self.counter = new_counter;
+    }
 }
 
 #[wasm_bindgen(start)]

@@ -2,12 +2,12 @@
   "name": "wasm",
   "version": "0.1.0",
   "files": [
-    "index_bg.wasm",
-    "index.js",
-    "index_bg.js",
-    "index.d.ts"
+    "wasm_bg.wasm",
+    "wasm.js",
+    "wasm_bg.js",
+    "wasm.d.ts"
   ],
-  "module": "index.js",
-  "types": "index.d.ts",
+  "module": "wasm.js",
+  "types": "wasm.d.ts",
   "sideEffects": false
 }
