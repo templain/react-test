@@ -35,8 +35,10 @@ function App() {
     }
   },[textCounter]);
   useEffect(() => {
-    const saved_cards = JSON.parse(localStorage.getItem("wordlist"));
-    console.log(saved_cards);
+    var saved_cards = JSON.parse(localStorage.getItem("wordlist"));
+    if(saved_cards === null) {
+      saved_cards = [];
+    }
     setCards(saved_cards);
     counter_state.set_counter(saved_cards.length);
     setTextCounter(saved_cards.length);
