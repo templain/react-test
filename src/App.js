@@ -58,9 +58,9 @@ function App() {
           <Input mx='2' placeholder='Answer' value={text2} onChange={onChangeText2} />
         </Flex>
         <HStack p={1}>
-          <Button colorScheme='teal' size='lg' onClick={onClickOpen}>Add</Button>
-          <Button colorScheme='teal' size='lg' onClick={onClickShuffle}>Shuffle</Button>
-          <Button colorScheme='teal' size='lg' onClick={onClickReset}>Reset</Button>
+          <Button colorScheme='teal' onClick={onClickOpen}>Add</Button>
+          <Button colorScheme='teal' onClick={onClickShuffle}>Shuffle</Button>
+          <Button colorScheme='teal' onClick={onClickReset}>Reset</Button>
         </HStack>
         <VStack p={1}>
           {cards.map((v) => {

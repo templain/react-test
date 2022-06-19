@@ -6,6 +6,6 @@ export const ChildArea = (props) => {
   const [toggle, setToggle] = useState(true);
   const onClickToggle = () => setToggle(!toggle);
   return (
-    <Button w='100%' colorScheme={toggle ? 'blue' : 'pink'} onClick={onClickToggle}>{toggle ? t1 : t2}</Button>
+    <Button size='lg' w='100%' colorScheme={toggle ? 'blue' : 'pink'} onClick={onClickToggle}>{toggle ? t1 : t2}</Button>
   );
 };
