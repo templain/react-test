@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import './App.css';
 import { ChildArea } from "./ChildArea";
 import { CounterState } from "wasm";
+import { Input, Button, ChakraProvider, Box, Flex, Text, VStack, HStack, Heading, Center } from "@chakra-ui/react";
 
 const counter_state = CounterState.new();
 
@@ -20,10 +21,12 @@ function App() {
     setTextCounter(0);
   };
   const onClickOpen = () => {
-    setCards([...cards, { id:textCounter + 1, text1, text2 }]);
-    setText1("");
-    setText2("");
-    setTextCounter(counter_state.increment_counter());
+    if(text1 && text2) {
+      setCards([...cards, { id:textCounter + 1, text1, text2 }]);
+      setText1("");
+      setText2("");
+      setTextCounter(counter_state.increment_counter());
+    }
   };
   const onClickShuffle = () => {
     cards.sort(() => Math.random() - 0.5);
@@ -44,19 +47,28 @@ function App() {
     setTextCounter(saved_cards.length);
   },[]);
   return (
-    <div className="App">
-      <input value={text1} onChange={onChangeText1} />
-      <input value={text2} onChange={onChangeText2} />
-      現在{textCounter}問登録済みです。
-      <br />
-      <br />
-      <button onClick={onClickOpen}>Add</button>
-      <button onClick={onClickShuffle}>Shuffle</button>
-      <button onClick={onClickReset}>Reset</button>
-      {cards.map((v) => {
-        return <ChildArea key={v.id} t1={v.text1} t2={v.text2} />;
-      })}
-    </div>
+    <ChakraProvider>
+      <Box m={4}>
+        <Center my='5'>
+          <Heading>単語カード</Heading>
+        </Center>
+        <Text>現在{textCounter}問登録済みです。</Text>
+        <Flex>
+          <Input mx='2' placeholder='Question' value={text1} onChange={onChangeText1} />
+          <Input mx='2' placeholder='Answer' value={text2} onChange={onChangeText2} />
+        </Flex>
+        <HStack p={1}>
+          <Button colorScheme='teal' size='lg' onClick={onClickOpen}>Add</Button>
+          <Button colorScheme='teal' size='lg' onClick={onClickShuffle}>Shuffle</Button>
+          <Button colorScheme='teal' size='lg' onClick={onClickReset}>Reset</Button>
+        </HStack>
+        <VStack p={1}>
+          {cards.map((v) => {
+            return <ChildArea key={v.id} t1={v.text1} t2={v.text2} />;
+          })}
+        </VStack>
+      </Box>
+    </ChakraProvider>
   );
 
 }
