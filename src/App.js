@@ -60,7 +60,7 @@ function App() {
         <HStack p={1}>
           <Button colorScheme='teal' onClick={onClickOpen}>Add</Button>
           <Button colorScheme='teal' onClick={onClickShuffle}>Shuffle</Button>
-          <Button colorScheme='teal' onClick={onClickReset}>Reset</Button>
+          <Button colorScheme='red' onClick={onClickReset}>Reset</Button>
         </HStack>
         <VStack p={1}>
           {cards.map((v) => {
