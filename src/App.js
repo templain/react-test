@@ -32,6 +32,18 @@ function App() {
     cards.sort(() => Math.random() - 0.5);
     setCards(cards.slice(0, cards.length));
   };
+  const onClickDeleteButton = (id) => {
+    setCards(cards.filter(row => row.id != id)
+    .map(row => {
+      return {
+        id:(row.id < id ? row.id : row.id - 1), 
+        text1:row.text1, 
+        text2:row.text2
+      };
+    }));
+    setTextCounter(counter_state.decrement_counter());
+  };
+  
   useEffect(() => {
     if(Number(textCounter) !== -1) {
       localStorage.setItem("wordlist", JSON.stringify(cards));
@@ -64,7 +76,7 @@ function App() {
         </HStack>
         <VStack p={1}>
           {cards.map((v) => {
-            return <ChildArea key={v.id} t1={v.text1} t2={v.text2} />;
+            return <ChildArea key={v.id} id={v.id} t1={v.text1} t2={v.text2} onClickDeleteButton={onClickDeleteButton} />;
           })}
         </VStack>
       </Box>
