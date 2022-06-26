@@ -9,14 +9,22 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-wasm-bindgen = "0.2.74"
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1.6"
+
 
 # The `web-sys` crate allows you to interact with the various browser APIs,
 # like the DOM.
 [dependencies.web-sys]
-version = "0.3.22"
-features = ["console"]
-
+version = "0.3"
+features = [
+  'console',
+  'Window',
+  'Document',
+  'Element',
+  'HtmlElement',
+  'Node',
+]
 
 [package.metadata.wasm-pack.profile.release]
 wasm-opt = false
