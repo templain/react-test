@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import './App.css';
 import { ChildArea } from "./ChildArea";
 import init, { update_number } from "wasm";
@@ -28,7 +28,7 @@ function App() {
     cards.sort(() => Math.random() - 0.5);
     setCards(cards.slice(0, cards.length));
   };
-  const onClickDeleteButton = (id) => {
+  const onClickDeleteButton = useCallback((id) => {
     setCards(cards.filter(row => row.id !== id)
     .map(row => {
       return {
@@ -37,7 +37,7 @@ function App() {
         text2:row.text2
       };
     }));
-  };
+  }, [cards]);
 
   useEffect(() => {
     if(loaded) {
