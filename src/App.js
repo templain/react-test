@@ -18,8 +18,8 @@ function App() {
   };
   const onClickOpen = () => {
     if(text1 && text2) {
-      var cnt = cards.length + 1;
-      setCards([...cards, { id:cnt, text1, text2 }]);
+      var max_id = cards.length === 0 ? 1 : cards.map((card) => card.id).reduce((a, b) => Math.max(a, b));
+      setCards([...cards, { id:max_id + 1, text1, text2 }]);
       setText1("");
       setText2("");
     }
@@ -32,7 +32,7 @@ function App() {
     setCards(cards.filter(row => row.id !== id)
     .map(row => {
       return {
-        id:(row.id < id ? row.id : row.id - 1), 
+        id:row.id, 
         text1:row.text1, 
         text2:row.text2
       };
