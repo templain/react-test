@@ -44,6 +44,7 @@ function App() {
       localStorage.setItem("wordlist", JSON.stringify(cards));
       update_number(cards.length, "mytest");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[cards]);
   
   useEffect(() => {
